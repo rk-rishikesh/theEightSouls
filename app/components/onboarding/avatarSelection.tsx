@@ -115,28 +115,43 @@ const AvatarSelection = ({
         const signer = await new ethers.BrowserProvider(ethereum).getSigner();
         console.log(signer);
 
+        const abii = JSON.parse(SOULABI);
+
         const soul = new ethers.Contract(
             SOULADDRESS,
-            SOULABI,
+            abii,
             signer
         );
 
-        const tokenId = await soul.count();
+        let tokenId: any = await soul.count();
+        tokenId = tokenId.toString();
 
-        console.log(tokenId);
+        let ti = tokenId - 1;
 
         const tokenboundClient = new TokenboundClient({
             signer,
             chainId: 5,
         });
 
-        // if (!tokenboundClient || !account) return
+        const account = await tokenboundClient.getAccount({
+            tokenContract: SOULADDRESS,
+            tokenId: ti,
+        })
 
-        console.log("Token ID : ", cur);
-        const createdAccount = await tokenboundClient.createAccount({
-            tokenContract: "0x35b17592958796A77F56Bf9431a12EC9847DE35F",
-            tokenId: cur,
-        });
+        console.log(account)
+
+        const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
+            accountAddress: account,
+        })
+
+        console.log("Token ID : ", ti);
+        if (isAccountDeployed) {
+            const createdAccount = await tokenboundClient.createAccount({
+                tokenContract: "0x35b17592958796A77F56Bf9431a12EC9847DE35F",
+                tokenId: ti,
+            });
+        }
+
     }, []);
 
 
