@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useEffectOnce, useEventListener } from 'usehooks-ts';
-
 import PreLoader from "./components/other/PreLoader";
 
 import Blur from "./components/overlay/Blur";

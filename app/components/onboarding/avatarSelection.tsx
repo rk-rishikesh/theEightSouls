@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./avatarSelection.css";
 
 interface Props {
@@ -15,7 +15,7 @@ const AvatarSelection = ({
     const [cur, setCur] = useState(0);
     const [avatar, setAvatar] = useState(0);
     const [tba, setTBA] = useState(false);
-
+    const [imgs, setImgs] = useState<string[]>([]);
     // const avatars = [
     //     "https://i.ibb.co/y5pZtjj/image.png",
     //     "https://i.ibb.co/tPzzsPq/image.png",
@@ -26,17 +26,29 @@ const AvatarSelection = ({
     // ];
 
     const avatars = [
-        "/avatars/one.png",
-        "/avatars/two.png",
-        "/avatars/three.png",
-        "/avatars/four.png",
-        "/avatars/five.png",
-        "/avatars/six.png",
-        "/avatars/seven.png",
-        "/avatars/eight.png",
-        "/avatars/nine.png",
-        "/avatars/ten.png"
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/1.json",
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/2.json",
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/3.json",
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/4.json",
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/5.json",
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/6.json",
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/7.json",
+        "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/8.json",
     ];
+
+    useEffect( () => {
+        const getAvatars = async () => {
+            for(var i = 0; i < 8; i++){
+                const data = await fetch(avatars[i])
+                const jsonValue = await data.json()
+                console.log(jsonValue);
+                const img = jsonValue.image;
+                console.log("https://gateway.lighthouse.storage/ipfs/" + img.slice(7))
+                setImgs([...imgs, "https://gateway.lighthouse.storage/ipfs/" + img.slice(7)])
+            }
+        };
+        getAvatars();
+    });
 
     const handleRightClick = () => {
         console.log(cur);
@@ -45,7 +57,6 @@ const AvatarSelection = ({
         } else if (cur == 9) {
             setCur(0);
         }
-
     };
 
     const handleLeftClick = () => {
@@ -74,7 +85,7 @@ const AvatarSelection = ({
 
             {!tba && <>
                 <div className="grid grid-cols-6 gap-4">
-                    <div><img alt="character" className="character" src={avatars[cur]} /></div>
+                    <div><img alt="character" className="character" src={imgs[cur]} /></div>
                     <div><button className="leftArrow" onClick={() => handleLeftClick()}><img alt="left"  src="https://i.ibb.co/cNxXk6J/image-removebg-preview.png" /></button></div>
                     <div><button className="rightArrow" onClick={() => handleRightClick()}><img alt="right" src="https://i.ibb.co/ZXV9Pt0/image.png" /></button></div>
                 </div>
@@ -88,7 +99,7 @@ const AvatarSelection = ({
 
             {tba && <>
                 <div className="grid grid-cols-6 gap-4">
-                    <div><img alt="" className="character" src={avatars[avatar]} /></div>
+                    <div><img alt="" className="character" src={imgs[avatar]} /></div>
                     {/* <div><img className="leftArrow" onClick={() => handleLeftClick()} src="https://i.ibb.co/cNxXk6J/image-removebg-preview.png" /></div> */}
                     {/* <div><img className="rightArrow" onClick={() => handleRightClick()} src="https://i.ibb.co/ZXV9Pt0/image.png" /></div> */}
                 </div>
