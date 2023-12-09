@@ -1,3 +1,3 @@
 export default function NotFoundCatchAll() {
-    return <div>NOT FOUND</div>
+    return <div>NOT FOUND</div>;
 }

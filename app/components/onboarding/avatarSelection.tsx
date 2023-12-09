@@ -89,20 +89,20 @@ const AvatarSelection = ({
 
 
     const handleMint = async () => {
-        const provider = await detectEthereumProvider({ silent: true })
-        console.log(provider)
+        const provider = await detectEthereumProvider({ silent: true });
+        console.log(provider);
         const ethereum: any = await window.ethereum;
 
         const signer = await new ethers.BrowserProvider(ethereum).getSigner();
-        console.log(signer.address)
+        console.log(signer.address);
 
         const soul = new ethers.Contract(
             SOULADDRESS,
             SOULABI,
             signer
         );
-        if(await soul.balanceOf(signer.address) < 0){
-            const transaction = await soul.safeMint(signer.address, cur+1);
+        if (await soul.balanceOf(signer.address) < 0) {
+            const transaction = await soul.safeMint(signer.address, cur + 1);
             console.log(transaction);
             await transaction.wait();
         }
@@ -113,7 +113,7 @@ const AvatarSelection = ({
         const ethereum: any = await window.ethereum;
 
         const signer = await new ethers.BrowserProvider(ethereum).getSigner();
-        console.log(signer)
+        console.log(signer);
 
         const soul = new ethers.Contract(
             SOULADDRESS,
@@ -123,23 +123,21 @@ const AvatarSelection = ({
 
         const tokenId = await soul.count();
 
-        console.log(tokenId)
+        console.log(tokenId);
 
         const tokenboundClient = new TokenboundClient({
             signer,
             chainId: 5,
-        })
+        });
 
         // if (!tokenboundClient || !account) return
 
-        console.log("Token ID : ",cur)
+        console.log("Token ID : ", cur);
         const createdAccount = await tokenboundClient.createAccount({
             tokenContract: "0x35b17592958796A77F56Bf9431a12EC9847DE35F",
             tokenId: cur,
-        })
-        console.log(`new account: ${createdAccount}`)
-        alert(`new account: ${createdAccount}`)
-    }, [])
+        });
+    }, []);
 
 
     return (

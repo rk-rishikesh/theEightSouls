@@ -1,1 +1,1 @@
-export * from './useEthersSigner.ts'
+export * from './useEthersSigner.ts';
