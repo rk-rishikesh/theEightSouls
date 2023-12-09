@@ -81,12 +81,10 @@ const AvatarSelection = ({
     };
 
     const diveIn = async () => {
-        await createAccount();
+        // await createAccount();
         setPage(4);
         console.log("Convert to TBA");
     };
-
-
 
     const handleMint = async () => {
         const provider = await detectEthereumProvider({ silent: true });
