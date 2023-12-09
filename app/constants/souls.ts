@@ -1,7 +1,7 @@
 export const SOULADDRESS = "0x35b17592958796A77F56Bf9431a12EC9847DE35F";
 
 export const SOULABI = 
-[
+`[
 	{
 	  "inputs": [
 		{
@@ -628,6 +628,6 @@ export const SOULABI =
 	  "stateMutability": "nonpayable",
 	  "type": "function"
 	}
-  ]
+  ]`;
    
 		
