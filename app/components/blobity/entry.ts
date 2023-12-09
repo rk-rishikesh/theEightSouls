@@ -5,7 +5,7 @@
  */
 
 // this is here for webpack to expose Blobity as window.Blobity
-import Blobity from "./Blobity";
+import Blobity from "./Blobity.ts";
 
 
 const autoStart = document.querySelector(
@@ -22,4 +22,4 @@ if (autoStart) {
     }
 }
 
-export {default} from "./Blobity";
+export {default} from "./Blobity.ts";
