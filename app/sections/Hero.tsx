@@ -21,6 +21,7 @@ import AnimatedBody from "../animations/AnimatedBody.tsx";
 import AnimatedTitle from "../animations/AnimatedTitle.tsx";
 import Loading from "./Loading.tsx";
 import Attribute from "../components/loadout/attribute.tsx";
+import Game from "./Game.tsx";
 
 interface Props {
     page: number;
@@ -221,7 +222,7 @@ const Hero = ({
             {page == 6 &&
                 <>
                     <div>
-                        Game
+                    <Game  page={page} setPage={setPage}/>
                     </div>
 
                 </>}

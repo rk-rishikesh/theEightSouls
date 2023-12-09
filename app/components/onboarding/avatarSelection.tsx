@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { TokenboundClient } from '@tokenbound/sdk';
+import { TokenboundClient , TBVersion} from '@tokenbound/sdk';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { useSDK } from "@metamask/sdk-react";
 import { ethers } from "ethers";
@@ -74,14 +74,15 @@ const AvatarSelection = ({
     };
 
     const selectAvatar = async () => {
+        
+        await handleMint();
         setTBA(true);
         setAvatar(cur);
-        await handleMint();
         console.log("Mint Avatar");
     };
 
     const diveIn = async () => {
-        // await createAccount();
+        await createAccount();
         setPage(4);
         console.log("Convert to TBA");
     };
@@ -99,8 +100,9 @@ const AvatarSelection = ({
             SOULABI,
             signer
         );
+        console.log(await soul.balanceOf(signer.address))
         if (await soul.balanceOf(signer.address) < 0) {
-            const transaction = await soul.safeMint(signer.address, cur + 1);
+            const transaction = await soul.safeMint(signer.address, 1, "1");
             console.log(transaction);
             await transaction.wait();
         }
@@ -113,41 +115,39 @@ const AvatarSelection = ({
         const signer = await new ethers.BrowserProvider(ethereum).getSigner();
         console.log(signer);
 
-        const abii = JSON.parse(SOULABI);
+        // let tokenId: any = await soul.count();
+        // tokenId = tokenId.toString();
 
-        const soul = new ethers.Contract(
-            SOULADDRESS,
-            abii,
-            signer
-        );
-
-        let tokenId: any = await soul.count();
-        tokenId = tokenId.toString();
-
-        let ti = tokenId - 1;
+        // let ti = tokenId - 1;
 
         const tokenboundClient = new TokenboundClient({
             signer,
             chainId: 5,
-        });
+          })
+        
+        console.log(tokenboundClient)
 
         const account = await tokenboundClient.getAccount({
             tokenContract: SOULADDRESS,
-            tokenId: ti,
+            tokenId: 1,
         });
 
         console.log(account);
 
-        const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
-            accountAddress: account,
-        });
+        // const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
+        //     accountAddress: account,
+        // });
 
-        console.log("Token ID : ", ti);
-        if (isAccountDeployed) {
+        // console.log(isAccountDeployed)
+
+        console.log("Token ID : ", 1);
+        if (true) {
             const createdAccount = await tokenboundClient.createAccount({
-                tokenContract: "0x35b17592958796A77F56Bf9431a12EC9847DE35F",
-                tokenId: ti,
+                tokenContract: "0x0Bd96Be4659D6894EbAb9D1Cb43e74c3c31aBBbF",
+                tokenId: "1",
             });
+            await createdAccount.wait();
+            console.log(createdAccount)
         };
 
     }, []);
