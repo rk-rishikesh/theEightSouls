@@ -36,7 +36,7 @@ export const Player = () => {
         // moving player
         const velocity = playerRef.current.linvel();
 
-        frontVector.set(0, 0, backward.to  - forward);
+        frontVector.set(0, 0, backward  - forward);
         sideVector.set(left - right, 0, 0);
         // frontVector.set(0, 0, 1);
         // sideVector.set(1, 0, 0);

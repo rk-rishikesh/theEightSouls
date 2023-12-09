@@ -1,8 +1,7 @@
-export const SOULADDRESS = "0x0Bd96Be4659D6894EbAb9D1Cb43e74c3c31aBBbF";
+export const SOULADDRESS = "0xCB130af9A5902E19EeDCDc75248075829dd8a6A3";
 
 export const SOULABI = 
-`
-[
+`[
 	{
 		"inputs": [
 			{
@@ -666,5 +665,4 @@ export const SOULABI =
 		"stateMutability": "view",
 		"type": "function"
 	}
-]
-`;
+]`

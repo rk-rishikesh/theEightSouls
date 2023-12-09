@@ -74,7 +74,6 @@ const AvatarSelection = ({
     };
 
     const selectAvatar = async () => {
-
         await handleMint();
         setTBA(true);
         setAvatar(cur);
@@ -115,14 +114,9 @@ const AvatarSelection = ({
         const signer = await new ethers.BrowserProvider(ethereum).getSigner();
         console.log(signer);
 
-        // let tokenId: any = await soul.count();
-        // tokenId = tokenId.toString();
-
-        // let ti = tokenId - 1;
-
         const tokenboundClient = new TokenboundClient({
             signer,
-            chainId: 5,
+            chainId: 137,
         });
 
         console.log(tokenboundClient);
@@ -134,16 +128,10 @@ const AvatarSelection = ({
 
         console.log(account);
 
-        // const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
-        //     accountAddress: account,
-        // });
-
-        // console.log(isAccountDeployed)
-
         console.log("Token ID : ", 1);
         if (true) {
             const createdAccount = await tokenboundClient.createAccount({
-                tokenContract: "0x0Bd96Be4659D6894EbAb9D1Cb43e74c3c31aBBbF",
+                tokenContract: "0xCB130af9A5902E19EeDCDc75248075829dd8a6A3",
                 tokenId: "1",
             });
             await createdAccount.wait();

@@ -12,10 +12,10 @@ export const usePersonControls = () => {
   const moveFieldByKey = (key) => keys[key];
 
   const [movement, setMovement] = useState({
-    forward: any,
-    backward: any,
-    left: any,
-    right: any,
+    forward:0,
+    backward:0,
+    left:0,
+    right:0,
     jump: false,
   });
 

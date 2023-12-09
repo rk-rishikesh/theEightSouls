@@ -27,8 +27,8 @@ export const Weapon = (props:any) => {
     const setIsAiming = useAimingStore((state:any) => state.setIsAiming);
     const weaponRef = useRef<any>();
 
-    let audio = new Audio("/gunshot.mp3");
-    const texture = useLoader(TextureLoader, "./flash_shoot.png");
+    let audio = new Audio("https://gateway.lighthouse.storage/ipfs/QmaBDBAYLJGGERDKf2JZNoibWgwhs39VXUgZZKCZLy5qwZ/single-shoot-ak47.wav");
+    const texture = useLoader(TextureLoader, "https://gateway.lighthouse.storage/ipfs/QmTtd2M5WqJDtijv35jQ8zT2EHfPapynS1NZ8Go9ftHCMx");
     const [flashAnimation, setFlashAnimation] = useState<any>(null);
 
     useEffect(() => {
