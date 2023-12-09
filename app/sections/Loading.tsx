@@ -26,7 +26,6 @@ const Loading = () => {
             </div>
             <div className="sub hidden"></div>
         </div>
-
     );
 };
 
