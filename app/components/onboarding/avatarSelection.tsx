@@ -106,7 +106,7 @@ const AvatarSelection = ({
             console.log(transaction);
             await transaction.wait();
         }
-    }
+    };
 
     const createAccount = useCallback(async () => {
 

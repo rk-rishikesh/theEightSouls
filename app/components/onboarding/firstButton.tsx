@@ -31,7 +31,7 @@ const FirstButton = ({
             // const signer = await new ethers.BrowserProvider(ethereum).getSigner();
             // console.log(signer)
             setHasProvider(Boolean(provider)); // transform provider to true or false
-        }
+        };
 
         getProvider();
     }, []);
