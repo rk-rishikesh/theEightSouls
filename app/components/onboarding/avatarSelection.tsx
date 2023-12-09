@@ -136,13 +136,13 @@ const AvatarSelection = ({
         const account = await tokenboundClient.getAccount({
             tokenContract: SOULADDRESS,
             tokenId: ti,
-        })
+        });
 
-        console.log(account)
+        console.log(account);
 
         const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
             accountAddress: account,
-        })
+        });
 
         console.log("Token ID : ", ti);
         if (isAccountDeployed) {
@@ -150,7 +150,7 @@ const AvatarSelection = ({
                 tokenContract: "0x35b17592958796A77F56Bf9431a12EC9847DE35F",
                 tokenId: ti,
             });
-        }
+        };
 
     }, []);
 
