@@ -75,8 +75,7 @@ const AvatarSelection = ({
 
     const selectAvatar = async () => {
         await handleMint();
-        setTBA(true);
-        setAvatar(cur);
+        
         console.log("Mint Avatar");
     };
 
@@ -100,11 +99,13 @@ const AvatarSelection = ({
             signer
         );
         console.log(await soul.balanceOf(signer.address));
-        if (await soul.balanceOf(signer.address) < 0) {
+        if (await soul.balanceOf(signer.address) <= 0) {
             const transaction = await soul.safeMint(signer.address, 1, "1");
             console.log(transaction);
             await transaction.wait();
         }
+        setTBA(true);
+        setAvatar(cur);
     };
 
     const createAccount = useCallback(async () => {
