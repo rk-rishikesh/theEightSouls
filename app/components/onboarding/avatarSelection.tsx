@@ -6,7 +6,7 @@ import { ethers } from "ethers";
 import {
     SOULADDRESS,
     SOULABI,
-} from "../../constants/souls.jsx";
+} from "../../constants/souls.ts";
 import { useEthersSigner } from '../hooks/index.ts'
 import "./avatarSelection.css";
 
