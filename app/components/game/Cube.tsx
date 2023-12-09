@@ -7,12 +7,12 @@ import { TextureLoader } from "three";
 //   return cubes.map((coords, index) => <Cube key={index} position={coords} />);
 // };
 
-export const Cube = (props:any) => {
+export const Cube = (props: any) => {
   const texture = useLoader(TextureLoader, "./iron.jpeg");
 
   return (
     <RigidBody {...props}>
-      <mesh castShadow receiveShadow>
+      <mesh>
         <meshStandardMaterial color="white" />
         <boxGeometry />
       </mesh>

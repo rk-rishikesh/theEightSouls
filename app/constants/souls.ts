@@ -667,4 +667,4 @@ export const SOULABI =
 		"type": "function"
 	}
 ]
-`
+`;

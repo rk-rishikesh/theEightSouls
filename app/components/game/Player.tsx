@@ -45,12 +45,6 @@ export const Player = () => {
 
         playerRef.current.wakeUp();
         playerRef.current.setLinvel({ x: direction.x, y: velocity.y, z: direction.z });
-
-        // jumping
-        const world = rapier.world;
-        // const ray = world.castRay(new RAPIER.Ray(playerRef.current.translation(), { x: 0, y: -1, z: 0 }));
-        // const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1.5;
-
         // if (jump && grounded) doJump();
         if (jump) doJump();
         // moving camera
@@ -71,7 +65,7 @@ export const Player = () => {
 
     const doJump = () => {
         playerRef.current.setLinvel({ x: 0, y: 8, z: 0 });
-    }
+    };
 
     const setSwayingAnimationParams = () => {
         if (!swayingAnimation) return;
@@ -86,7 +80,7 @@ export const Player = () => {
             setSwayingDuration(() => 1000);
             setSwayingNewPosition(() => new THREE.Vector3(-0.01, 0, 0));
         }
-    }
+    };
 
     const initSwayingObjectAnimation = () => {
         const currentPosition = new THREE.Vector3(0, 0, 0);
@@ -117,7 +111,7 @@ export const Player = () => {
         setSwayingAnimation(twSwayingAnimation);
         setSwayingBackAnimation(twSwayingBackAnimation);
 
-    }
+    };
 
     useEffect(() => {
         setSwayingAnimationParams();
@@ -147,7 +141,7 @@ export const Player = () => {
 
         setAimingAnimation(twAimingAnimation);
         setAimingBackAnimation(twAimingBackAnimation);
-    }
+    };
 
     useEffect(() => {
         initAimingAnimation();
@@ -180,4 +174,4 @@ export const Player = () => {
             </group>
         </>
     );
-}
+};

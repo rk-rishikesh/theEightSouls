@@ -1,9 +1,9 @@
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function WeaponModel(props:any) {
-      
-    const { nodes, materials } = useGLTF('https://gateway.lighthouse.storage/ipfs/QmVUwTKtfRByqDrjehxtMuvdNXDytitoeP1nQDa7xPh6yR/ak.glb')
+export function WeaponModel(props: any) {
+
+    const { nodes, materials } = useGLTF('https://gateway.lighthouse.storage/ipfs/QmVUwTKtfRByqDrjehxtMuvdNXDytitoeP1nQDa7xPh6yR/ak.glb');
     return (
         <group {...props} dispose={null}>
             <mesh

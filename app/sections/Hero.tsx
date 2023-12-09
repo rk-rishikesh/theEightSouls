@@ -222,7 +222,7 @@ const Hero = ({
             {page == 6 &&
                 <>
                     <div>
-                    <Game  page={page} setPage={setPage}/>
+                        <Game page={page} setPage={setPage} />
                     </div>
 
                 </>}

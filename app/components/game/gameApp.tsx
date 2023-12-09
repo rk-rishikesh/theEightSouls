@@ -32,7 +32,7 @@ export const App = () => {
 
   return (
     <>
-    <PointerLockControls
+      <PointerLockControls
         onLock={pointerLockControlsLockHandler}
         onUnlock={pointerLockControlsUnlockHandler}
       />
@@ -50,15 +50,15 @@ export const App = () => {
       />
       <Physics gravity={[0, -20, 0]}>
         <Ground />
-         <Player />
-        <Cube position={[1, 0, 10]}/>
-        <Cube position={[2, 0, 7]}/>
-        <Cube position={[6, 0, 3]}/>
-        <Cube position={[10, 0, 10]}/>
-        <Cube position={[24, 0, 10]}/>
-        <Target position={[10, 0, 15]}/> 
+        <Player />
+        <Cube position={[1, 0, 10]} />
+        <Cube position={[2, 0, 7]} />
+        <Cube position={[6, 0, 3]} />
+        <Cube position={[10, 0, 10]} />
+        <Cube position={[24, 0, 10]} />
+        <Target position={[10, 0, 15]} />
 
-      </Physics>      
+      </Physics>
     </>
   );
 };

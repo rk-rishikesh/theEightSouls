@@ -24,6 +24,9 @@
       "typescript": { "project": "./" }
     }
   },
+  "rules": {
+    "react/no-unknown-property": ["error", { "ignore": ["tsx"] }],
+  },
   "plugins": [
     "react-hooks",
     "react",

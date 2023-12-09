@@ -8,7 +8,7 @@ import {
 import detectEthereumProvider from '@metamask/detect-provider';
 
 import { ethers } from "ethers";
-import "./Game.css"
+import "./Game.css";
 
 interface Props {
     page: number;
@@ -21,7 +21,7 @@ const Game = ({
 }: Props) => {
 
     const goToHeadquarters = async () => {
-        await updateRank()
+        await updateRank();
         setPage(3);
     };
 

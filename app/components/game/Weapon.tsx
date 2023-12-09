@@ -27,7 +27,7 @@ export const Weapon = (props:any) => {
     const setIsAiming = useAimingStore((state:any) => state.setIsAiming);
     const weaponRef = useRef<any>();
 
-    let audio = new Audio("/gunshot.mp3")
+    let audio = new Audio("/gunshot.mp3");
     const texture = useLoader(TextureLoader, "./flash_shoot.png");
     const [flashAnimation, setFlashAnimation] = useState<any>(null);
 
@@ -54,20 +54,20 @@ export const Weapon = (props:any) => {
                 setIsAiming(state);
                 break;
         }
-    }
+    };
 
     const generateRecoilOffset = () => {
         return new THREE.Vector3(
             Math.random() * recoilAmount,
             Math.random() * recoilAmount,
             Math.random() * recoilAmount,
-        )
-    }
+        );
+    };
 
     const generateNewPositionOfRecoil = (currentPosition = new THREE.Vector3(0, 0, 0)) => {
         const recoilOffset = generateRecoilOffset();
         return currentPosition.clone().add(recoilOffset);
-    }
+    };
 
     const initRecoilAnimation = () => {
         const currentPosition = new THREE.Vector3(0, 0, 0);
@@ -89,14 +89,14 @@ export const Weapon = (props:any) => {
             });
 
         setRecoilAnimation(twRecoilAnimation);
-    }
+    };
 
     const startShooting = () => {
         if (!recoilAnimation && !flashAnimation) return;
         audio.play();
         recoilAnimation.start();
         flashAnimation.start();
-    }
+    };
 
     useEffect(() => {
         initRecoilAnimation();
@@ -130,7 +130,7 @@ export const Weapon = (props:any) => {
             });
 
         setFlashAnimation(twFlashAnimation);
-    }
+    };
 
     useEffect(() => {
         initFlashAnimation();
@@ -147,4 +147,4 @@ export const Weapon = (props:any) => {
             </group>
         </group>
     );
-}
+};

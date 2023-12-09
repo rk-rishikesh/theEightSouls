@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { TokenboundClient , TBVersion} from '@tokenbound/sdk';
+import { TokenboundClient, TBVersion } from '@tokenbound/sdk';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { useSDK } from "@metamask/sdk-react";
 import { ethers } from "ethers";
@@ -74,7 +74,7 @@ const AvatarSelection = ({
     };
 
     const selectAvatar = async () => {
-        
+
         await handleMint();
         setTBA(true);
         setAvatar(cur);
@@ -100,7 +100,7 @@ const AvatarSelection = ({
             SOULABI,
             signer
         );
-        console.log(await soul.balanceOf(signer.address))
+        console.log(await soul.balanceOf(signer.address));
         if (await soul.balanceOf(signer.address) < 0) {
             const transaction = await soul.safeMint(signer.address, 1, "1");
             console.log(transaction);
@@ -123,9 +123,9 @@ const AvatarSelection = ({
         const tokenboundClient = new TokenboundClient({
             signer,
             chainId: 5,
-          })
-        
-        console.log(tokenboundClient)
+        });
+
+        console.log(tokenboundClient);
 
         const account = await tokenboundClient.getAccount({
             tokenContract: SOULADDRESS,
@@ -147,7 +147,7 @@ const AvatarSelection = ({
                 tokenId: "1",
             });
             await createdAccount.wait();
-            console.log(createdAccount)
+            console.log(createdAccount);
         };
 
     }, []);

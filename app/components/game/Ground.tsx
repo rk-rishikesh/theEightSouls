@@ -13,4 +13,4 @@ export const Ground = () => {
             <CuboidCollider args={[500, 2, 500]} position={[0, -2, 0]}/>
         </RigidBody>
     );
-}
+};
