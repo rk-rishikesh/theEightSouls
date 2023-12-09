@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { TokenboundClient } from '@tokenbound/sdk'
 import "./avatarSelection.css";
 
 interface Props {
@@ -38,13 +39,13 @@ const AvatarSelection = ({
 
     useEffect( () => {
         const getAvatars = async () => {
-            for(var i = 0; i < 8; i++){
-                const data = await fetch(avatars[i])
-                const jsonValue = await data.json()
+            for(let i = 0; i < 8; i++){
+                const data = await fetch(avatars[i]);
+                const jsonValue = await data.json();
                 console.log(jsonValue);
                 const img = jsonValue.image;
-                console.log("https://gateway.lighthouse.storage/ipfs/" + img.slice(7))
-                setImgs([...imgs, "https://gateway.lighthouse.storage/ipfs/" + img.slice(7)])
+                console.log("https://gateway.lighthouse.storage/ipfs/" + img.slice(7));
+                setImgs([...imgs, "https://gateway.lighthouse.storage/ipfs/" + img.slice(7)]);
             }
         };
         getAvatars();
@@ -72,12 +73,12 @@ const AvatarSelection = ({
     const selectAvatar = () => {
         setTBA(true);
         setAvatar(cur);
-        console.log("Avatar");
+        console.log("Mint Avatar");
     };
 
     const diveIn = () => {
         setPage(4);
-        console.log("Dive In");
+        console.log("Convert to TBA");
     };
 
     return (
