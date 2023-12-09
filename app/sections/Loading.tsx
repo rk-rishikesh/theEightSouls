@@ -21,7 +21,7 @@ const Loading = () => {
         >
 
             <div className="loader">
-                <img className="mt-8" src="/loader.png" />
+                <img className="mt-8" src="/loader.png" alt=""/>
                 <span></span>
             </div>
             <div className="sub hidden"></div>

@@ -169,7 +169,7 @@ const Hero = ({
                                                     "ml-72 mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] "
                                                 }
                                             />
-                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" />
+                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt=""/>
                                             <button className="sbutton ml-72 mt-16" onClick={getTheGun}>GET THE GUN</button>
                                         </div>
                                     </>
@@ -193,7 +193,7 @@ const Hero = ({
                                                     "ml-72 mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] "
                                                 }
                                             />
-                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" />
+                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt=""/>
                                             <button className="sbutton ml-72 mt-16" onClick={playNow}>CUSTOMIZE ARMOR</button>
                                         </div>
                                     </>

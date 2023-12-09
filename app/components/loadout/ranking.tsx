@@ -5,7 +5,7 @@ const Ranking = () => {
     return (
         <div className="rankcards">
             <div className="outlinePage">
-                   <img className="trophy w-32 h-32" src="/Trainee.png"/>
+                <img className="trophy w-32 h-32" src="/Trainee.png" alt=""/>
                 <p className="ranking_number"><span className="ranking_word">Trainee</span></p>
                 <div className="splitLine"></div>
             </div>

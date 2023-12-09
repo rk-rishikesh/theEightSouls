@@ -36,7 +36,7 @@ const AvatarSelection = ({
         "/avatars/eight.png",
         "/avatars/nine.png",
         "/avatars/ten.png"
-    ]
+    ];
 
     const handleRightClick = () => {
         console.log(cur);

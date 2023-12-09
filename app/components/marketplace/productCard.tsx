@@ -29,7 +29,7 @@ const ProductCard = ({
                     <div className="container-logo">
                         <div className="logo"></div>
                         <div className="logo-inside">
-                            <img className="logo-img" src="https://cryptologos.cc/logos/polygon-matic-logo.png" />
+                            <img className="logo-img" src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt=""/>
                         </div>
                     </div>
                     <div id="blur-area">

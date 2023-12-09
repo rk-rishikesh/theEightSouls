@@ -16,16 +16,16 @@ const Card = () => {
             <div className="bottom-section">
                 <span className="title">ATTACHMENTS</span>
                 <div className="attachmentCard">
-                    <a href="#" className="socialContainer containerOne">
+                    <div className="socialContainer containerOne">
                         H
-                    </a>
+                    </div>
 
-                    <a href="#" className="socialContainer containerTwo">
+                    <div className="socialContainer containerTwo">
                         C
-                    </a>
-                    <a href="#" className="socialContainer containerThree">
+                    </div>
+                    <div className="socialContainer containerThree">
                         V
-                    </a>
+                    </div>
 
 
                 </div>

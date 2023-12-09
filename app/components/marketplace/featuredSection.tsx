@@ -35,8 +35,9 @@ const FeaturedSection = ({
             className="relative z-10 flex w-full flex-col items-center justify-center bg-cover bg-center py-16 md:py-20 lg:py-20"
         >
             <div className="grid grid-cols-3 gap-10 lg:max-w-[1200px] lg:grid-rows-1">
-                {items.map((item: ProductProps) => (
+                {items.map((item: ProductProps, i) => (
                     <ProductCard
+                        key={i}
                         id={item.id}
                         img={item.img}
                         description={item.description}

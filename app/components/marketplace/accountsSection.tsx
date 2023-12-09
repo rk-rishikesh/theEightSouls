@@ -39,13 +39,14 @@ const AccountsSection = ({
             <div className="grid grid-cols-3 gap-10 lg:max-w-[1200px] lg:grid-rows-1">
                 {
                     opt && <>
-                        <ProductPage uri={uri} setOpt={setOpt}/>
+                        <ProductPage uri={uri} setOpt={setOpt} />
                     </>
                 }
                 {
                     !opt && <>
-                        {items.map((item: ProductProps) => (
+                        {items.map((item: ProductProps, i) => (
                             <ProductCard
+                                key={i}
                                 id={item.id}
                                 img={item.img}
                                 description={item.description}

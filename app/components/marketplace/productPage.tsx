@@ -9,8 +9,8 @@ type ProductProps = {
 };
 
 const ProductPage = ({
-   uri,
-   setOpt
+    uri,
+    setOpt
 }: ProductProps) => {
 
     const goBack = () => {
@@ -20,13 +20,7 @@ const ProductPage = ({
     return (
         <>
             <div>
-                {/* <img
-                    src="/ghost-background.jpg"
-                    alt="s"
-                    className="absolute h-full left-0 opacity-50"
-                /> */}
-                {/* <img className="absolute w-[20%] ml-52 left-0" src={uri} /> */}
-                <iframe src="http://localhost:3000/0x26727ed4f5ba61d3772d1575bca011ae3aef5d36/1/1" width={500} height={500} style={{borderRadius:"2%"}}></iframe>
+                <iframe src="http://localhost:3000/0x26727ed4f5ba61d3772d1575bca011ae3aef5d36/1/1" width={500} height={500} style={{ borderRadius: "2%" }}></iframe>
                 <div
                     className={`absolute text-white right-0 mr-0 ml-10 md:right-0 md:ml-0 lg:right-0 lg:top-60  lg:mr-4 mb-10  md:mb-16 lg:mb-14 `}
                 >
@@ -45,10 +39,10 @@ const ProductPage = ({
                         }
                     />
                     <div className="flex">
-                    <button className="sbutton ml-72 mt-16">BUY</button>
-                    <button className="sbutton ml-8 mt-16" onClick={goBack}>BACK</button>
+                        <button className="sbutton ml-72 mt-16">BUY</button>
+                        <button className="sbutton ml-8 mt-16" onClick={goBack}>BACK</button>
                     </div>
-                    
+
                 </div>
 
             </div>
