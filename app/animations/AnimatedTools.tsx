@@ -1,6 +1,6 @@
 import React, {cloneElement} from "react";
 import { IconType } from "react-icons";
-import Animated from "./Animated"; // Replace with the correct path to the "Animated" component
+import Animated from "./Animated.tsx"; // Replace with the correct path to the "Animated" component
 
 type AnimatedToolsProps = {
     delay: number;

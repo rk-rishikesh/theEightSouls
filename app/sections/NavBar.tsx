@@ -1,5 +1,5 @@
 "use client";
-import Container from "../components/container/Container";
+import Container from "../components/container/Container.tsx";
 import React from "react";
 
 interface Props {

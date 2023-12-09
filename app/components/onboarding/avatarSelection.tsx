@@ -1,5 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { TokenboundClient } from '@tokenbound/sdk'
+import React, { useState, useEffect, useCallback } from "react";
+import { TokenboundClient } from '@tokenbound/sdk';
+import detectEthereumProvider from '@metamask/detect-provider';
+import { useSDK } from "@metamask/sdk-react";
+import { ethers } from "ethers";
+import {
+    SOULADDRESS,
+    SOULABI,
+} from "../../constants/souls.jsx";
+import { useEthersSigner } from '../hooks/index.ts'
 import "./avatarSelection.css";
 
 interface Props {
@@ -12,19 +20,12 @@ const AvatarSelection = ({
     setPage,
 }: Props) => {
 
+    const { sdk, connected, connecting, provider, chainId, account } = useSDK();
 
     const [cur, setCur] = useState(0);
     const [avatar, setAvatar] = useState(0);
     const [tba, setTBA] = useState(false);
     const [imgs, setImgs] = useState<string[]>([]);
-    // const avatars = [
-    //     "https://i.ibb.co/y5pZtjj/image.png",
-    //     "https://i.ibb.co/tPzzsPq/image.png",
-    //     "https://i.ibb.co/0ZVsH47/image.png",
-    //     "https://i.ibb.co/MN5KP56/image.png",
-    //     "https://i.ibb.co/gWKcWz2/Classic-Scorpion.png",
-    //     "https://i.ibb.co/G2VTTFT/image.png"
-    // ];
 
     const avatars = [
         "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/1.json",
@@ -37,9 +38,9 @@ const AvatarSelection = ({
         "https://gateway.lighthouse.storage/ipfs/QmRhWcxW2XAeZ5fW99CyfHA1SUe8Pm69y3ATzpiaQumN9E/8.json",
     ];
 
-    useEffect( () => {
+    useEffect(() => {
         const getAvatars = async () => {
-            for(let i = 0; i < 8; i++){
+            for (let i = 0; i < 8; i++) {
                 const data = await fetch(avatars[i]);
                 const jsonValue = await data.json();
                 console.log(jsonValue);
@@ -70,9 +71,10 @@ const AvatarSelection = ({
         }
     };
 
-    const selectAvatar = () => {
+    const selectAvatar = async () => {
         setTBA(true);
         setAvatar(cur);
+        await handleMint();
         console.log("Mint Avatar");
     };
 
@@ -81,13 +83,51 @@ const AvatarSelection = ({
         console.log("Convert to TBA");
     };
 
+    const signer = useEthersSigner({ chainId: 5 })
+    // or useSigner() from legacy wagmi versions: const { data: signer } = useSigner()
+
+    const tokenboundClient = new TokenboundClient({
+        signer,
+        chainId: 5,
+    })
+
+    const handleMint = async () => {
+        const provider = await detectEthereumProvider({ silent: true })
+        console.log(provider)
+        const ethereum:any = await window.ethereum;
+
+        const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+        console.log(signer)
+
+        const soul = new ethers.Contract(
+            SOULADDRESS,
+            SOULABI,
+            signer
+        );
+        const transaction = await soul.safeMint(account, cur);
+
+        console.log(transaction);
+        await transaction.wait();
+    }
+
+    const createAccount = useCallback(async () => {
+        if (!tokenboundClient || !account) return
+        const createdAccount = await tokenboundClient.createAccount({
+            tokenContract: "0x35b17592958796A77F56Bf9431a12EC9847DE35F",
+            tokenId: 0,
+        })
+        console.log(`new account: ${createdAccount}`)
+        alert(`new account: ${createdAccount}`)
+    }, [tokenboundClient])
+
+
     return (
         <div className="absolute justify-center">
 
             {!tba && <>
                 <div className="grid grid-cols-6 gap-4">
                     <div><img alt="character" className="character" src={imgs[cur]} /></div>
-                    <div><button className="leftArrow" onClick={() => handleLeftClick()}><img alt="left"  src="https://i.ibb.co/cNxXk6J/image-removebg-preview.png" /></button></div>
+                    <div><button className="leftArrow" onClick={() => handleLeftClick()}><img alt="left" src="https://i.ibb.co/cNxXk6J/image-removebg-preview.png" /></button></div>
                     <div><button className="rightArrow" onClick={() => handleRightClick()}><img alt="right" src="https://i.ibb.co/ZXV9Pt0/image.png" /></button></div>
                 </div>
 

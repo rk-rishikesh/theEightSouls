@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./productCard";
+import ProductCard from "./productCard.tsx";
 
 type ProductProps = {
     id: number;

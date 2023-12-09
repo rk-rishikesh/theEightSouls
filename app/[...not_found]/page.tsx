@@ -1,5 +1,3 @@
-import { notFound } from "next/navigation";
-
 export default function NotFoundCatchAll() {
-    notFound();
+    return <div>NOT FOUND</div>
 }

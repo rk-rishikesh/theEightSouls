@@ -1,8 +1,8 @@
 import "../animations/animate.css";
-import AnimatedTitle from "../animations/AnimatedTitle";
-import AnimatedWords from "../animations/AnimatedWords";
+import AnimatedTitle from "../animations/AnimatedTitle.tsx";
+import AnimatedWords from "../animations/AnimatedWords.tsx";
 import { motion } from "framer-motion";
-import ContactBackground from "../components/background/ContactBackground";
+import ContactBackground from "../components/background/ContactBackground.tsx";
 import React from "react";
 
 const Intro = () => {

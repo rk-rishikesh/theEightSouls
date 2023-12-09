@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Grain from "../overlay/Grain";
+import Grain from "../overlay/Grain.tsx";
 import "./container.css";
 import {useEventListener} from "usehooks-ts";
 

@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { useEffectOnce, useEventListener } from 'usehooks-ts';
-import PreLoader from "./components/other/PreLoader";
+import PreLoader from "./components/other/PreLoader.tsx";
 
-import Blur from "./components/overlay/Blur";
-import Color from "./components/overlay/Color";
+import Blur from "./components/overlay/Blur.tsx";
+import Color from "./components/overlay/Color.tsx";
 
-import NavBar from "./sections/NavBar";
-import Hero from "./sections/Hero";
+import NavBar from "./sections/NavBar.tsx";
+import Hero from "./sections/Hero.tsx";
 
 export default function Home() {
 

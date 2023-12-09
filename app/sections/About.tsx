@@ -1,7 +1,7 @@
 import React from "react";
 import "../animations/animate.css";
-import AnimatedBody from "../animations/AnimatedBody";
-import AnimatedTitle from "../animations/AnimatedTitle";
+import AnimatedBody from "../animations/AnimatedBody.tsx";
+import AnimatedTitle from "../animations/AnimatedTitle.tsx";
 
 const About = () => {
     return (

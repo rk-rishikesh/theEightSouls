@@ -1,7 +1,7 @@
 import throttle from "lodash/throttle";
 import Kinet from "kinet";
-import { Color, convertColor, isGradient, positive } from "./helpers";
-import Magnetic from "./Magnetic";
+import { Color, convertColor, isGradient, positive } from "./helpers.ts";
+import Magnetic from "./Magnetic.ts";
 
 export type Options = {
   licenseKey: string | null;

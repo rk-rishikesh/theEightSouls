@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./productCard";
-import ProductPage from "./productPage";
+import ProductCard from "./productCard.tsx";
+import ProductPage from "./productPage.tsx";
 
 type ProductProps = {
     id: number;

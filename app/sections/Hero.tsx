@@ -1,26 +1,26 @@
 
 import { motion } from "framer-motion";
-import HeroBackground from "../components/background/HeroBackground";
+import HeroBackground from "../components/background/HeroBackground.tsx";
 import React, { useState } from "react";
-import Card from "../components/card/card";
-import OnboardingBackground from "../components/background/OnboardingBackground";
-import MarketplaceBackground from "../components/background/MarketplaceBackground";
-import LoadoutBackground from "../components/background/LoadoutBackground";
-import HeadquarterBackground from "../components/background/HeadquarterBackground";
-import ModeOneCard from "../components/headquarter/modeOneCard";
-import ModeTwoCard from "../components/headquarter/modeTwoCard";
-import ModeThreeCard from "../components/headquarter/modeThreeCard";
-import Ranking from "../components/loadout/ranking";
-import Sections from "../components/marketplace/sections";
-import Companion from "../components/loadout/companion";
-import Intro from "./Intro";
-import Avatar from "../components/loadout/avatar";
-import AvatarSelection from "../components/onboarding/avatarSelection";
-import FirstButton from "../components/onboarding/firstButton";
-import AnimatedBody from "../animations/AnimatedBody";
-import AnimatedTitle from "../animations/AnimatedTitle";
-import Loading from "./Loading";
-import Attribute from "../components/loadout/attribute";
+import Card from "../components/card/card.tsx";
+import OnboardingBackground from "../components/background/OnboardingBackground.tsx";
+import MarketplaceBackground from "../components/background/MarketplaceBackground.tsx";
+import LoadoutBackground from "../components/background/LoadoutBackground.tsx";
+import HeadquarterBackground from "../components/background/HeadquarterBackground.tsx";
+import ModeOneCard from "../components/headquarter/modeOneCard.tsx";
+import ModeTwoCard from "../components/headquarter/modeTwoCard.tsx";
+import ModeThreeCard from "../components/headquarter/modeThreeCard.tsx";
+import Ranking from "../components/loadout/ranking.tsx";
+import Sections from "../components/marketplace/sections.tsx";
+import Companion from "../components/loadout/companion.tsx";
+import Intro from "./Intro.tsx";
+import Avatar from "../components/loadout/avatar.tsx";
+import AvatarSelection from "../components/onboarding/avatarSelection.tsx";
+import FirstButton from "../components/onboarding/firstButton.tsx";
+import AnimatedBody from "../animations/AnimatedBody.tsx";
+import AnimatedTitle from "../animations/AnimatedTitle.tsx";
+import Loading from "./Loading.tsx";
+import Attribute from "../components/loadout/attribute.tsx";
 
 interface Props {
     page: number;
