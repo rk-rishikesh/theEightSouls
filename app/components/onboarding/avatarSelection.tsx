@@ -75,14 +75,13 @@ const AvatarSelection = ({
 
     const selectAvatar = async () => {
         await handleMint();
-        
+
         console.log("Mint Avatar");
     };
 
     const diveIn = async () => {
         await createAccount();
-        setPage(4);
-        console.log("Convert to TBA");
+
     };
 
     const handleMint = async () => {
@@ -130,14 +129,19 @@ const AvatarSelection = ({
         console.log(account);
 
         console.log("Token ID : ", 1);
-        if (true) {
+        if (false) {
             const createdAccount = await tokenboundClient.createAccount({
                 tokenContract: "0xCB130af9A5902E19EeDCDc75248075829dd8a6A3",
                 tokenId: "1",
             });
             await createdAccount.wait();
             console.log(createdAccount);
-        };
+            setPage(4);
+            console.log("Convert to TBA");
+        } else {
+            setPage(4);
+            console.log("Convert to TBA");
+        }
 
     }, []);
 
