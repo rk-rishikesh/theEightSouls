@@ -95,7 +95,7 @@ const Hero = ({
                     <div className="mt-32 ml-8 object-left-bottom flex flex-col gap-5">
                         {/* <HeadquarterBox /> */}
                         <button onClick={enterTraining}><ModeOneCard /></button>
-                        
+
                         <ModeTwoCard />
                         <ModeThreeCard />
                     </div>
@@ -114,7 +114,7 @@ const Hero = ({
                                 >
                                     <div className="mt-20 ml-20 pb-24 grid grid-cols grid-flow-row gap-4">
                                         <Ranking />
-                                        <Attribute/>
+                                        <Attribute />
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@ const Hero = ({
                                                     "ml-72 mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] "
                                                 }
                                             />
-                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt=""/>
+                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt="" />
                                             <button className="sbutton ml-72 mt-16" onClick={getTheGun}>GET THE GUN</button>
                                         </div>
                                     </>
@@ -193,7 +193,7 @@ const Hero = ({
                                                     "ml-72 mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] "
                                                 }
                                             />
-                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt=""/>
+                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt="" />
                                             <button className="sbutton ml-72 mt-16" onClick={playNow}>CUSTOMIZE ARMOR</button>
                                         </div>
                                     </>
