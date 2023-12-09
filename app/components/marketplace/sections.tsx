@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./sections.css";
-import FeaturedSection from "./featuredSection";
-import OutfitSection from "./outfitSection";
-import ArmorSection from "./armorCrates";
-import CompanionSection from "./companions";
-import AccountsSection from "./accountsSection";
+import FeaturedSection from "./featuredSection.tsx";
+import OutfitSection from "./outfitSection.tsx";
+import ArmorSection from "./armorCrates.tsx";
+import CompanionSection from "./companions.tsx";
+import AccountsSection from "./accountsSection.tsx";
 
 const Sections = () => {
 
