@@ -1,4 +1,3 @@
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
 import "../animations/animate.css";
 import AnimatedTitle from "../animations/AnimatedTitle";
 import AnimatedWords from "../animations/AnimatedWords";
@@ -24,7 +23,7 @@ const Intro = () => {
             <div className="mx-auto  flex w-[90%] flex-col items-center justify-center pt-10 md:pt-0">
 
                 <div
-                    className={`flex flex-col items-start justify-center ${spaceGrotesk.className} relative w-full sm:items-center lg:max-w-[1440px] `}
+                    className={`flex flex-col items-start justify-center relative w-full sm:items-center lg:max-w-[1440px] `}
                 >
                     <div className="flex gap-10 text-[16px] font-bold text-[#e4ded7]  sm:gap-14 sm:text-[24px] md:gap-10 md:text-[16px] lg:gap-20 lg:text-[28px]">
 

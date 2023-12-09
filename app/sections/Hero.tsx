@@ -1,4 +1,4 @@
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
+
 import { motion } from "framer-motion";
 import HeroBackground from "../components/background/HeroBackground";
 import React, { useState } from "react";
@@ -110,7 +110,7 @@ const Hero = ({
                         firstTime && <>
                             <div className="overflow-x-scroll no-scrollbar items-center justify-center sm:mt-0">
                                 <div
-                                    className={`relative items-center justify-center ${spaceGrotesk.className}`}
+                                    className={`relative items-center justify-center`}
                                 >
                                     <div className="mt-20 ml-20 pb-24 grid grid-cols grid-flow-row gap-4">
                                         <Ranking />
@@ -121,7 +121,7 @@ const Hero = ({
 
                             <div className="overflow-x-scroll no-scrollbar items-center justify-center pl-[43%] sm:mt-0">
                                 <div
-                                    className={`relative items-center justify-center ${spaceGrotesk.className}`}
+                                    className={`relative items-center justify-center`}
                                 >
                                     <div className="mt-20 ml-20 pb-24 grid grid-cols grid-flow-row gap-4">
                                         <Card />

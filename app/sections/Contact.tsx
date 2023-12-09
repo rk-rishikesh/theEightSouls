@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
 import "../animations/animate.css";
 import AnimatedBody from "../animations/AnimatedBody";
 import AnimatedTitle from "../animations/AnimatedTitle";
@@ -19,7 +18,7 @@ const Contact = () => {
             <ContactBackground />
             <div className="mx-auto  flex w-[90%] flex-col items-center justify-center pt-10 md:pt-0">
                 <div
-                    className={`flex flex-col items-start justify-center ${spaceGrotesk.className} relative w-full sm:items-center lg:max-w-[1440px] `}
+                    className={`flex flex-col items-start justify-center relative w-full sm:items-center lg:max-w-[1440px] `}
                 >
                     <AnimatedWords
                         title={"contact"}
