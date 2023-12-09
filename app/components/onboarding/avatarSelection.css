@@ -1,0 +1,18 @@
+.character{
+    margin-top: 100px;
+    height: 500px;
+    min-width: 350px;
+    margin-left: 550px;
+}
+
+.leftArrow{
+    margin-top: 300px;
+    width: 100px;
+    margin-left: 200px;
+}
+
+.rightArrow{
+    margin-top: 300px;
+    width: 100px;
+    margin-left: 420px;
+}
