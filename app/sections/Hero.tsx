@@ -99,7 +99,7 @@ const Hero = ({
         console.log(account);
 
         console.log("Token ID : ", 1);
-        if (true) {
+        if (false) {
             const createdAccount = await tokenboundClient.createAccount({
                 tokenContract: "0xCA825651fB3b3c604a22c24F220454309E8C0635",
                 tokenId: "1",
