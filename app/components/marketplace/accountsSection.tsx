@@ -22,12 +22,7 @@ const AccountsSection = ({
     // let [items, setItems] = useState<ProductProps[]>([]);
     const [uri, setUri] = useState("");
     const items = ([
-        { id: 0, img: "/avatars/one.png", description: "account account account account" },
-        { id: 1, img: "/avatars/two.png", description: "account account account account" },
-        { id: 2, img: "/avatars/three.png", description: "account account account account" },
-        { id: 3, img: "/avatars/four.png", description: "account account account account" },
-        { id: 4, img: "/avatars/five.png", description: "account account account account" },
-        { id: 5, img: "/avatars/six.png", description: "account account account account" },
+        { id: 0, img: "/avatars/ten.png", description: "Chronos Chronos Chronos Chronos" },
     ]);
 
     return (

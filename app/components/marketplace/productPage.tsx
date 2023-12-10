@@ -4,6 +4,8 @@ import AnimatedBody from "../../animations/AnimatedBody.tsx";
 import AnimatedTitle from "../../animations/AnimatedTitle.tsx";
 import { createLightNode, Protocols, waitForRemotePeer, createEncoder, createDecoder } from "@waku/sdk";
 import protobuf from "protobufjs";
+import detectEthereumProvider from '@metamask/detect-provider';
+import { ethers } from "ethers";
 
 type ProductProps = {
     uri: string;
@@ -15,18 +17,15 @@ const ProductPage = ({
     setOpt
 }: ProductProps) => {
 
-
     const waaaku = async () => {
         const node = await createLightNode({ defaultBootstrap: true });
         await node.start();
 
-
         await waitForRemotePeer(node, [Protocols.Store]);
-
         // 2
 
         // Choose a content topic
-        const contentTopic = "/light-guide/1/message/proto";
+        const contentTopic = "/toy-chat/" + 1 + "/huilong/proto";
 
         // Create a message encoder and decoder
         const encoder = createEncoder({ contentTopic });
@@ -34,18 +33,27 @@ const ProductPage = ({
 
         //3
 
+
+
         // Create a message structure using Protobuf
         const ChatMessage = new protobuf.Type("ChatMessage")
-            .add(new protobuf.Field("timestamp", 1, "uint64"))
+            .add(new protobuf.Field("tokenID", 1, "uint64"))
             .add(new protobuf.Field("sender", 2, "string"))
-            .add(new protobuf.Field("message", 3, "string"));
+            .add(new protobuf.Field("bidVal", 3, "uint64"));
+
+        const provider = await detectEthereumProvider({ silent: true });
+        console.log(provider);
+        const ethereum: any = await window.ethereum;
+
+        const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+        console.log(signer.address);
 
 
         // Create a new message object
         const wakuMessage = ChatMessage.create({
-            timestamp: Date.now(),
-            sender: "Alice",
-            message: "Hello, World!",
+            tokenID: Date.now(),
+            sender: signer.address,
+            bidVal: "50 MATIC",
         });
 
         // Serialise the message using Protobuf
@@ -92,12 +100,12 @@ const ProductPage = ({
     return (
         <>
             <div>
-                <iframe title="account" src="http://localhost:3000/0x26727ed4f5ba61d3772d1575bca011ae3aef5d36/1/1" width={500} height={500} style={{ borderRadius: "2%" }}></iframe>
+                <iframe title="account" src="https://accountframe.vercel.app/0xCB130af9A5902E19EeDCDc75248075829dd8a6A3/1/137?disableloading=true&logo=galverse" width={500} height={500} style={{ borderRadius: "2%" }}></iframe>
                 <div
                     className={`absolute text-white right-0 mr-0 ml-10 md:right-0 md:ml-0 lg:right-0 lg:top-60  lg:mr-4 mb-10  md:mb-16 lg:mb-14 `}
                 >
                     <AnimatedTitle
-                        text="Let's start the training"
+                        text="Bid using Waku"
                         className={
                             "ml-72 mt-[-10%] max-w-[90%] text-[40px] leading-none text-white md:text-[44px] md:leading-none lg:max-w-[450px] lg:text-[48px] lg:leading-none"
                         }
@@ -105,14 +113,14 @@ const ProductPage = ({
                         charSpace={"-mr-[0.01em]"}
                     />
                     <AnimatedBody
-                        text="You have been chosen to lead the resistance against the Vanguard"
+                        text="Last Bid Was 50 MATIC, Bid for 51 MATIC"
                         className={
                             "ml-72 mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] "
                         }
                     />
-                    <div> Past Bids</div>
+                    
                     <div className="flex">
-                        <button className="sbutton ml-72 mt-16" onClick={waaaku}>BUY</button>
+                        <button className="sbutton ml-72 mt-16" onClick={waaaku}>BID</button>
                         <button className="sbutton ml-8 mt-16" onClick={goBack}>BACK</button>
                     </div>
 
