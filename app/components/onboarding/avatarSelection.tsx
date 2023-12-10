@@ -19,8 +19,6 @@ const AvatarSelection = ({
     setPage,
 }: Props) => {
 
-    const { sdk, connected, connecting, provider, chainId, account } = useSDK();
-
     const [cur, setCur] = useState(0);
     const [avatar, setAvatar] = useState(0);
     const [tba, setTBA] = useState(false);

@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import HeroBackground from "../components/background/HeroBackground.tsx";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Card from "../components/card/card.tsx";
 import OnboardingBackground from "../components/background/OnboardingBackground.tsx";
 import MarketplaceBackground from "../components/background/MarketplaceBackground.tsx";
@@ -22,6 +22,10 @@ import AnimatedTitle from "../animations/AnimatedTitle.tsx";
 import Loading from "./Loading.tsx";
 import Attribute from "../components/loadout/attribute.tsx";
 import Game from "./Game.tsx";
+import { ARMOURADDRESS, ARMOURABI } from "../constants/armour.ts";
+import detectEthereumProvider from '@metamask/detect-provider';
+import { ethers } from "ethers";
+import { TokenboundClient, TBVersion } from '@tokenbound/sdk';
 
 interface Props {
     page: number;
@@ -36,15 +40,67 @@ const Hero = ({
     const [firstTime, setFirstTime] = useState(false);
     const [loadout, setLoadout] = useState(0);
 
-    const getTheGun = () => {
+    const getTheGun = async () => {
+        const provider = await detectEthereumProvider({ silent: true });
+        console.log(provider);
+        const ethereum: any = await window.ethereum;
+
+        const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+        console.log(signer.address);
+
+        const armour = new ethers.Contract(
+            ARMOURADDRESS,
+            ARMOURABI,
+            signer
+        );
+
+        console.log(await armour.balanceOf(signer.address));
+        if (await armour.balanceOf(signer.address) <= 0) {
+            const transaction = await armour.safeMint(signer.address, 1, "1");
+            console.log(transaction);
+            await transaction.wait();
+        }
         setLoadout(1);
         console.log("Get The Gun");
     };
 
-    const playNow = () => {
-        setFirstTime(true);
-        console.log("Get The Gun");
-    };
+    const playNow = useCallback(async () => {
+
+        const ethereum: any = await window.ethereum;
+
+        const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+        console.log(signer);
+
+        const tokenboundClient = new TokenboundClient({
+            signer,
+            chainId: 137,
+        });
+
+        console.log(tokenboundClient);
+
+        const account = await tokenboundClient.getAccount({
+            tokenContract: ARMOURADDRESS,
+            tokenId: 1,
+        });
+
+        console.log(account);
+
+        console.log("Token ID : ", 1);
+        if (true) {
+            const createdAccount = await tokenboundClient.createAccount({
+                tokenContract: "0xCA825651fB3b3c604a22c24F220454309E8C0635",
+                tokenId: "1",
+            });
+            await createdAccount.wait();
+            console.log(createdAccount);
+            setFirstTime(true);
+            console.log("Get The Gun");
+        } else {
+            setFirstTime(true);
+            console.log("Get The Gun");
+        }
+
+    }, []);
 
     const enterTraining = () => {
         setPage(6);
@@ -170,7 +226,7 @@ const Hero = ({
                                                     "ml-72 mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] "
                                                 }
                                             />
-                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt="" />
+                                            <img className="w-[50%] ml-52" src="https://gateway.lighthouse.storage/ipfs/QmaR4YijHbRPsUpY8GavabYZ2npW1w2dp9w3Lx1NCMicHj" alt="" />
                                             <button className="sbutton ml-72 mt-16" onClick={getTheGun}>GET THE GUN</button>
                                         </div>
                                     </>
@@ -194,7 +250,7 @@ const Hero = ({
                                                     "ml-72 mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] "
                                                 }
                                             />
-                                            <img className="w-[50%] ml-52" src="https://www.gamechampions.com/media/9251/m4-with-no-attachments-in-call-of-duty-mw2.png?width=494&height=176&mode=max" alt="" />
+                                            <img className="w-[50%] ml-52" src="https://gateway.lighthouse.storage/ipfs/QmaR4YijHbRPsUpY8GavabYZ2npW1w2dp9w3Lx1NCMicHj" alt="" />
                                             <button className="sbutton ml-72 mt-16" onClick={playNow}>CUSTOMIZE ARMOR</button>
                                         </div>
                                     </>
