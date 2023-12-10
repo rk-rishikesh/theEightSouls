@@ -8,8 +8,11 @@ import Color from "./components/overlay/Color.tsx";
 
 import NavBar from "./sections/NavBar.tsx";
 import Hero from "./sections/Hero.tsx";
-
+// import { init } from "@airstack/airstack-react";
+// init(process.env.REACT_APP_AIRSTACK_API_KEY);
 export default function Home() {
+
+   
 
     const [isMobile, setIsMobile] = useState(false);
     const [page, setPage] = useState(1);
