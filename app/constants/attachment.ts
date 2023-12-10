@@ -1,7 +1,8 @@
-export const ATTATCHMENTADDRESS = "0xCA825651fB3b3c604a22c24F220454309E8C0635";
+export const ATTATCHMENTADDRESS = "0xAD4673d2Ed67a12E65711Fe554A91F60e0f30BBE";
 
 export const ATTATCHMENTABI = 
-`[
+`
+[
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -439,5 +440,6 @@ export const ATTATCHMENTABI =
 		"stateMutability": "pure",
 		"type": "function"
 	}
-]`
+]
+`
 
