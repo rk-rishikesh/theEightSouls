@@ -148,20 +148,6 @@
   .timeNum {
     color: #6cabf6;
   }
+
   
-  .slide-in-top {
-    animation: slide-in-top 1s cubic-bezier(0.65, 0.05, 0.36, 1) both;
-  }
-  
-  @keyframes slide-in-top {
-    0% {
-      transform: translateY(-100px);
-      opacity: 0;
-    }
-  
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
   

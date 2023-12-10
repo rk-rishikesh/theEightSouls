@@ -104,7 +104,7 @@
   
   /* for all social containers*/
   .socialContainer {
-    width: 80px;
+    width: 260px;
     height: 80px;
     background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
     display: flex;
@@ -112,7 +112,7 @@
     justify-content: center;
     overflow: hidden;
     transition-duration: .3s;
-    border-radius: 9%;
+    border-radius: 10px;
   }
 
   

@@ -195,10 +195,7 @@ const Hero = ({
                                 >
                                     <div className="mt-20 ml-20 pb-24 grid grid-cols grid-flow-row gap-4">
                                         <Card />
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                        <Card />
+                                       
                                     </div>
                                 </div>
                             </div>

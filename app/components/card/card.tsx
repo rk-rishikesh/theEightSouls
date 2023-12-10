@@ -8,24 +8,17 @@ const Card = () => {
                 <div className="border"></div>
                 <div className="icons">
                     <div className="logox">
-                        AK47
+                        ASSAULT11
                     </div>
                 </div>
-                <img alt="Card" src="https://i.ibb.co/qJsVLtn/image.png" />
+                <img alt="Card" src="https://gateway.lighthouse.storage/ipfs/QmaR4YijHbRPsUpY8GavabYZ2npW1w2dp9w3Lx1NCMicHj" />
             </div>
             <div className="bottom-section">
                 <span className="title">ATTACHMENTS</span>
                 <div className="attachmentCard">
-                    <div className="socialContainer containerOne">
-                        H
-                    </div>
-
-                    <div className="socialContainer containerTwo">
-                        C
-                    </div>
-                    <div className="socialContainer containerThree">
-                        V
-                    </div>
+                    <button className="socialContainer containerOne">
+                        Mint Free Attachment NFT
+                    </button>
 
 
                 </div>
