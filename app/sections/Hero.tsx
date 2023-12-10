@@ -26,6 +26,7 @@ import { ARMOURADDRESS, ARMOURABI } from "../constants/armour.ts";
 import detectEthereumProvider from '@metamask/detect-provider';
 import { ethers } from "ethers";
 import { TokenboundClient, TBVersion } from '@tokenbound/sdk';
+import { SOULADDRESS } from "../constants/souls.ts";
 
 interface Props {
     page: number;
@@ -48,15 +49,27 @@ const Hero = ({
         const signer = await new ethers.BrowserProvider(ethereum).getSigner();
         console.log(signer.address);
 
+        const tokenboundClient = new TokenboundClient({
+            signer,
+            chainId: 137,
+        });
+
+        const soulAcc = await tokenboundClient.getAccount({
+            tokenContract: SOULADDRESS,
+            tokenId: 1,
+        });
+
+        console.log(soulAcc);
+
         const armour = new ethers.Contract(
             ARMOURADDRESS,
             ARMOURABI,
             signer
         );
 
-        console.log(await armour.balanceOf(signer.address));
-        if (await armour.balanceOf(signer.address) <= 0) {
-            const transaction = await armour.safeMint(signer.address, 1, "1");
+        console.log(await armour.balanceOf(soulAcc));
+        if (await armour.balanceOf(soulAcc) <= 0) {
+            const transaction = await armour.safeMint(soulAcc, 1, "1");
             console.log(transaction);
             await transaction.wait();
         }
