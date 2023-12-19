@@ -35,20 +35,28 @@ const AvatarSelection = ({
         "https://gateway.lighthouse.storage/ipfs/QmdQSUtaLbDA3yMAGUqWYeuFxh9K2VnrGbU6dKX1xYDr6j",
     ];
 
-    // useEffect(() => {
-    //     const getAvatars = async () => {
-    //         for (let i = 0; i < 8; i++) {
-    //             const data = await fetch(avatars[i]);
-    //             const jsonValue = await data.json();
-    //             console.log(jsonValue);
-    //             const img = jsonValue.image;
-    //             console.log("https://gateway.lighthouse.storage/ipfs/" + img.slice(7));
-    //             setImgs([...imgs, "https://gateway.lighthouse.storage/ipfs/" + img.slice(7)]);
-    //         }
-    //         console.log(imgs)
-    //     };
-    //     getAvatars();
-    // },[]);
+    useEffect(() => {
+        const getAvatars = async () => {
+            const provider = await detectEthereumProvider({ silent: true });
+            console.log(provider);
+            const ethereum: any = await window.ethereum;
+
+            const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+            console.log(signer.address);
+
+            const soul = new ethers.Contract(
+                SOULADDRESS,
+                SOULABI,
+                signer
+            );
+
+            console.log(await soul.balanceOf(signer.address));
+            if (await soul.balanceOf(signer.address) >= 1) {
+                setPage(4);
+            }
+        };
+        getAvatars();
+    }, []);
 
     const handleRightClick = () => {
         console.log(cur);
@@ -95,9 +103,11 @@ const AvatarSelection = ({
             SOULABI,
             signer
         );
+
+        console.log(cur)
         console.log(await soul.balanceOf(signer.address));
         if (await soul.balanceOf(signer.address) <= 0) {
-            const transaction = await soul.safeMint(signer.address, 1, "1");
+            const transaction = await soul.safeMint(signer.address, 2, "2");
             console.log(transaction);
             await transaction.wait();
         }
@@ -121,26 +131,19 @@ const AvatarSelection = ({
 
         const account = await tokenboundClient.getAccount({
             tokenContract: SOULADDRESS,
-            tokenId: 1,
+            tokenId: 2,
         });
 
         console.log(account);
 
-        console.log("Token ID : ", 1);
-        if (false) {
-            const createdAccount = await tokenboundClient.createAccount({
-                tokenContract: "0xCB130af9A5902E19EeDCDc75248075829dd8a6A3",
-                tokenId: "1",
-            });
-            await createdAccount.wait();
-            console.log(createdAccount);
-            setPage(4);
-            console.log("Convert to TBA");
-        } else {
-            setPage(4);
-            console.log("Convert to TBA");
-        }
-
+        const createdAccount = await tokenboundClient.createAccount({
+            tokenContract: "0xCB130af9A5902E19EeDCDc75248075829dd8a6A3",
+            tokenId: "2",
+        });
+        await createdAccount.wait();
+        console.log(createdAccount);
+        setPage(4);
+        console.log("Convert to TBA");
     }, []);
 
 

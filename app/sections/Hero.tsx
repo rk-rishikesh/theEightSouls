@@ -56,7 +56,7 @@ const Hero = ({
 
         const soulAcc = await tokenboundClient.getAccount({
             tokenContract: SOULADDRESS,
-            tokenId: 1,
+            tokenId: 2,
         });
 
         console.log(soulAcc);
@@ -69,11 +69,14 @@ const Hero = ({
 
         console.log(await armour.balanceOf(soulAcc));
         if (await armour.balanceOf(soulAcc) <= 0) {
-            const transaction = await armour.safeMint(soulAcc, 1, "1");
+            const transaction = await armour.safeMint(soulAcc, 2, "2");
             console.log(transaction);
             await transaction.wait();
+            setLoadout(1);
+        } else {
+            setFirstTime(true);
         }
-        setLoadout(1);
+        
         console.log("Get The Gun");
     };
 
@@ -93,25 +96,20 @@ const Hero = ({
 
         const account = await tokenboundClient.getAccount({
             tokenContract: ARMOURADDRESS,
-            tokenId: 1,
+            tokenId: 2,
         });
 
         console.log(account);
 
-        console.log("Token ID : ", 1);
-        if (false) {
+        console.log("Token ID : ", 2);
             const createdAccount = await tokenboundClient.createAccount({
                 tokenContract: "0xCA825651fB3b3c604a22c24F220454309E8C0635",
-                tokenId: "1",
+                tokenId: "2",
             });
             await createdAccount.wait();
             console.log(createdAccount);
             setFirstTime(true);
             console.log("Get The Gun");
-        } else {
-            setFirstTime(true);
-            console.log("Get The Gun");
-        }
 
     }, []);
 
